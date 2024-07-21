@@ -99,6 +99,13 @@ fn main() {
         vec3(374.0, 302.0, 0.0),
     ];
 
+    // Define the vertices of the third polygon
+    let polygon3 = vec![
+        vec3(377.0, 249.0, 0.0),
+        vec3(411.0, 197.0, 0.0),
+        vec3(436.0, 249.0, 0.0),
+    ];
+
     // Fill the first polygon with yellow color
     framebuffer.set_current_color(0xFFFF00); // Yellow
     fill_polygon(&mut framebuffer, &polygon1);
@@ -114,6 +121,14 @@ fn main() {
     // Draw the second polygon outline in white
     framebuffer.set_current_color(0xFFFFFF); // White
     draw_polygon(&mut framebuffer, &polygon2);
+
+    // Fill the third polygon with red color
+    framebuffer.set_current_color(0xFF0000); // Red
+    fill_polygon(&mut framebuffer, &polygon3);
+
+    // Draw the third polygon outline in white
+    framebuffer.set_current_color(0xFFFFFF); // White
+    draw_polygon(&mut framebuffer, &polygon3);
 
     // Save the framebuffer as a BMP file
     framebuffer.render_buffer("polygons.bmp").expect("Failed to write BMP file");
