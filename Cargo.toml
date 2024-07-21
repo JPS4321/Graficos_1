@@ -1,7 +1,0 @@
-[package]
-name = "HelloWorld"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-nalgebra-glm = "0.9"  
