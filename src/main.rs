@@ -77,11 +77,8 @@ fn main() {
     framebuffer.set_background_color(0xFFFFFF);
     framebuffer.clear();
 
-    // Set the current drawing color to yellow for filling
-    framebuffer.set_current_color(0xFFFF00);
-
-    // Define the vertices of the polygon
-    let polygon = vec![
+    // Define the vertices of the first polygon
+    let polygon1 = vec![
         vec3(165.0, 380.0, 0.0),
         vec3(185.0, 360.0, 0.0),
         vec3(180.0, 330.0, 0.0),
@@ -94,17 +91,32 @@ fn main() {
         vec3(193.0, 383.0, 0.0),
     ];
 
-    // Fill the polygon with yellow color
-    fill_polygon(&mut framebuffer, &polygon);
+    // Define the vertices of the second polygon
+    let polygon2 = vec![
+        vec3(321.0, 335.0, 0.0),
+        vec3(288.0, 286.0, 0.0),
+        vec3(339.0, 251.0, 0.0),
+        vec3(374.0, 302.0, 0.0),
+    ];
 
-    // Set the current drawing color to white for the outline
-    framebuffer.set_current_color(0xFFFFFF);
+    // Fill the first polygon with yellow color
+    framebuffer.set_current_color(0xFFFF00); // Yellow
+    fill_polygon(&mut framebuffer, &polygon1);
 
-    // Draw the polygon outline
-    draw_polygon(&mut framebuffer, &polygon);
+    // Draw the first polygon outline in white
+    framebuffer.set_current_color(0xFFFFFF); // White
+    draw_polygon(&mut framebuffer, &polygon1);
+
+    // Fill the second polygon with blue color
+    framebuffer.set_current_color(0x0000FF); // Blue
+    fill_polygon(&mut framebuffer, &polygon2);
+
+    // Draw the second polygon outline in white
+    framebuffer.set_current_color(0xFFFFFF); // White
+    draw_polygon(&mut framebuffer, &polygon2);
 
     // Save the framebuffer as a BMP file
-    framebuffer.render_buffer("filled_polygon.bmp").expect("Failed to write BMP file");
+    framebuffer.render_buffer("polygons.bmp").expect("Failed to write BMP file");
 
-    println!("Framebuffer rendered to filled_polygon.bmp");
+    println!("Framebuffer rendered to polygons.bmp");
 }
